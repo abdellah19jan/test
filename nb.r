@@ -1,67 +1,23 @@
 # Databricks notebook source
-# MAGIC %md
-# MAGIC # Main
+options(tidyverse.quiet = TRUE)
+library(tidyverse)
 
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ## Function
-
-# COMMAND ----------
-
-g <- function(x, y) {
-  
-  x - y
-  
-}
-
-# COMMAND ----------
-
-# MAGIC %md
-# MAGIC ## Application
-
-# COMMAND ----------
-
-g(3, 2)
-
-# COMMAND ----------
-
-# MAGIC %md
-# MAGIC # Test
-
-# COMMAND ----------
-
-# MAGIC %md
-# MAGIC ## Csv
-
-# COMMAND ----------
-
-library(sparklyr)
-
-# COMMAND ----------
-
-sc <- spark_connect("local", method = "databricks")
-
-# COMMAND ----------
-
-df <- spark_read_csv(sc, path = "dbfs:/FileStore/shared_uploads/HH6011/test.csv")
-
-# COMMAND ----------
-
-df
-
-# COMMAND ----------
-
-spark_disconnect(sc)
-
-# COMMAND ----------
-
-# MAGIC %md
-# MAGIC ## Working directory
+# MAGIC # Working directory
 
 # COMMAND ----------
 
 getwd()
+
+# COMMAND ----------
+
+setwd("/dbfs/FileStore/shared_uploads/HH6011")
+
+# COMMAND ----------
+
+list.files("./")
 
 # COMMAND ----------
 
@@ -84,12 +40,26 @@ getwd()
 
 # COMMAND ----------
 
-list.files("/tmp/Rserv/conn3589")
+# MAGIC %md
+# MAGIC # CSV
+
+# COMMAND ----------
+
+read_csv("test.csv")
 
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ## Run notebook
+# MAGIC # Read RDS
+
+# COMMAND ----------
+
+read_rds("1970_01_01.rds")
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC # Run notebook
 
 # COMMAND ----------
 
@@ -98,3 +68,7 @@ list.files("/tmp/Rserv/conn3589")
 # COMMAND ----------
 
 fct(2, 3)
+
+# COMMAND ----------
+
+list.files("/.")
