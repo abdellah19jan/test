@@ -8,6 +8,8 @@ library(sparklyr , warn.conflicts = FALSE)
 library(lubridate, warn.conflicts = FALSE)
 library(tidyverse)
 
+set_config(config(ssl_verifypeer = 0L, ssl_verifyhost = 0L))
+
 #==============================#
 # Charger les données de OMEGA #
 #==============================#
